@@ -7,6 +7,7 @@ body {
   align-items: center;
   overflow: hidden;
   background: #000;
+  user-select: none;
 }
 #home-contaner {
   position: relative;
@@ -208,13 +209,14 @@ body {
   width: 100%;
   height: 100%;
   display: grid;
+  place-items: center;
   grid-template-columns: var(--contact-photo-r) auto;
 }
 
 .contact-box .wrap .contact-icon {
   position: relative;
   width: 100%;
-  height: var(--contact-photo-r);
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -232,9 +234,9 @@ body {
 .contact-box .wrap .contact-datas {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 95%;
   display: grid;
-  padding-left: var(--chat-gap);
+  padding-left: 5px;
   grid-template-rows: 1fr 1fr;
 }
 
@@ -273,7 +275,7 @@ body {
   position: relative;
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   font-size: 0.7rem;
 }
 .contact-box .wrap .contact-datas .last-chat-no-of-msg .no-of-msg {
@@ -285,9 +287,9 @@ body {
 }
 .contact-box .wrap .contact-datas .last-chat-no-of-msg .no-of-msg p {
   position: relative;
-  font-size: 0.7rem;
-  font-weight: 900;
-  padding: 0 3px;
+  font-size: 0.6rem;
+  font-weight: 500;
+  padding: 1px 5px;
   background: #0ff;
   border-radius: 20px;
 }
