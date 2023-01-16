@@ -29,7 +29,7 @@ body {
   display: grid;
   grid-template-columns: auto calc(var(--max-index-header-h) / 3);
   background: #aaa;
-  transition: linear 0.3s all;
+  transition: linear 0.2s all;
 }
 #home-contaner .wapping header.active {
   grid-template-columns: auto calc(var(--max-index-header-h));
@@ -38,7 +38,7 @@ body {
   position: relative;
   width: 100%;
   height: calc(var(--max-index-header-h) / 3);
-  transition: linear 0.3s all;
+  transition: linear 0.2s all;
 }
 #home-contaner .wapping header.active #add-new-content {
   height: var(--max-index-header-h);
@@ -50,7 +50,7 @@ body {
   display: grid;
   padding: 3px;
   grid-template-rows: 0 5fr;
-  transition: linear 0.3s all;
+  transition: linear 0.2s all;
 }
 #home-contaner .wapping header.active #add-new-content .wrap {
   grid-template-rows: 10fr 5fr;
@@ -64,7 +64,7 @@ body {
   grid-template-rows: 4fr 3fr 4fr;
   opacity: 0;
   transform: scaleY(0);
-  transition: linear 0.3s transform, linear 0.3s opacity;
+  transition: linear 0.2s transform, linear 0.2s opacity;
 }
 #home-contaner .wapping header.active #add-new-content .wrap #toggle-content {
   transition-duration: 0.2s;
@@ -148,7 +148,7 @@ body {
   opacity: 0;
 }
 #home-contaner .wapping header #my-profile {
-  --time: calc(calc(0.3s / 4) * 3);
+  --time: calc(calc(0.2s / 4) * 3);
   position: relative;
   width: 100%;
   height: 100%;
