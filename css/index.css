@@ -154,7 +154,7 @@ body {
   display: grid;
   place-items: center;
   border-bottom-right-radius: 10px;
-  transform: scale(0.4);
+  transform: scale(0.35);
   transition: linear 0.3s all;
 }
 #home-contaner .wapping header.active #my-profile {
@@ -167,7 +167,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
 }
 #home-contaner .wapping header #my-profile .wrap .center {
   position: absolute;
@@ -177,6 +176,7 @@ body {
   background: #ccc;
   cursor: var(--cursor);
   font-size: 4rem;
+  padding: 5px;
 }
 
 /* ------------ contacts list --------------- */
