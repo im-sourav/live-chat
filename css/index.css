@@ -186,6 +186,7 @@ body {
   height: auto;
   margin-top: calc(var(--chat-gap) * 1.5);
   overflow-y: scroll;
+  touch-action: auto;
 }
 #home-contaner .wapping #all-contacts #wrap-contacts {
   position: relative;
@@ -193,30 +194,39 @@ body {
   height: min-content;
   display: flex;
   flex-direction: column;
-  gap: 3px;
 }
 #wrap-contacts .contact-box {
+  --side: 5px;
   position: relative;
   width: 100%;
   height: var(--contact-h);
+  padding: var(--side);
+  user-select: none;
 }
 #wrap-contacts .contact-box .wrap {
   position: relative;
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: var(--contact-h) auto;
+  grid-template-columns: var(--contact-photo-r) auto;
 }
 
 .contact-box .wrap .contact-icon {
   position: relative;
-  margin: 5px;
+  width: 100%;
+  height: var(--contact-photo-r);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .contact-box .wrap .contact-icon i {
   position: relative;
-  width: 100%;
-  height: 100%;
-  font-size: 2rem;
+  width: 80%;
+  height: 80%;
+  font-size: 1.5rem;
+  background: #fff;
+  outline: solid 1px #777;
+  border-radius: 100px;
 }
 
 .contact-box .wrap .contact-datas {
@@ -224,6 +234,7 @@ body {
   width: 100%;
   height: 100%;
   display: grid;
+  padding-left: var(--chat-gap);
   grid-template-rows: 1fr 1fr;
 }
 
@@ -232,7 +243,7 @@ body {
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: auto var(--contact-h);
+  grid-template-columns: auto min-content;
 }
 .contact-box .wrap .contact-datas .contact-name-time .contact-name {
   position: relative;
@@ -242,17 +253,41 @@ body {
   font-size: 0.9rem;
   font-weight: 700;
 }
-.contact-box .wrap .contact-datas .last-chat-no-of-seen {
+.contact-box .wrap .contact-datas .contact-name-time .last-chat-time {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 0.9rem;
+  padding: 0 3px;
+  font-weight: 600;
+}
+.contact-box .wrap .contact-datas .last-chat-no-of-msg {
   position: relative;
   width: 100%;
   height: 100%;
   display: grid;
   grid-template-columns: auto calc(var(--contact-h) / 2);
 }
-.contact-box .wrap .contact-datas .last-chat-no-of-seen .last-chat {
+.contact-box .wrap .contact-datas .last-chat-no-of-msg .last-chat {
   position: relative;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   font-size: 0.7rem;
+}
+.contact-box .wrap .contact-datas .last-chat-no-of-msg .no-of-msg {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+.contact-box .wrap .contact-datas .last-chat-no-of-msg .no-of-msg p {
+  position: relative;
+  font-size: 0.7rem;
+  font-weight: 900;
+  padding: 0 3px;
+  background: #0ff;
+  border-radius: 20px;
 }
