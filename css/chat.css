@@ -1,20 +1,12 @@
-body {
+body #chat-contaner {
   position: relative;
-  width: 100vw;
+  width: 0;
   height: 100vh;
-  /* padding-bottom: 10vh; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  background: #000;
+}
+body.active #chat-contaner {
+  width: var(--mn-chat-w);
 }
 
-#chat-contaner {
-  position: relative;
-  width: var(--mn-chat-w);
-  height: var(--mn-chat-h);
-}
 #chat-contaner .wapping {
   position: relative;
   width: 100%;
@@ -23,6 +15,7 @@ body {
   grid-template-rows: var(--chat-header-h) auto;
   background: #ddd;
 }
+
 #chat-contaner .wapping header {
   position: relative;
   width: 100%;
@@ -112,7 +105,7 @@ body {
 
 /* -------- footer --------- */
 .wapping footer {
-  position: fixed;
+  position: absolute;
   width: var(--mn-chat-w);
   min-height: var(--chat-min-h);
   max-height: var(--chat-max-h);

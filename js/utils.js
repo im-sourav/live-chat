@@ -669,3 +669,29 @@ function getChatDate() {
       time: `${_hh < 10 ? "0" + _hh : _hh}:${_mm < 10 ? "0" + _mm : _mm}`
    }
 }
+
+
+function smoothScroll(element, side, distence, time) {
+   let run = true;
+   const fps = 60;
+   let f = (time / 1000) * fps;
+   let count = f;
+   let d = distence / f;
+   let stap = element[side];
+
+   function loop() {
+
+       if (count <= 0) {
+           run = false;
+           if (distence < 0) element[side] = 0;
+           else element[side] = distence;
+       }
+       if (run) {
+           count--;
+           stap += d;
+           element[side] = stap;
+           setTimeout(loop, 1000 / fps);
+       }
+   }
+   loop();
+}

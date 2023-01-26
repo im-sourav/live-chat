@@ -1,0 +1,226 @@
+body {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+:root {
+  --gap: 2rem;
+  --margin: 5px;
+  --profile-img-h: 200px;
+  --name-cf-h: 60px;
+  --username-cf-h: 60px;
+  --connected-vw-h: 70px;
+}
+#profile-section {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+#profile-section .wapping {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: var(--profile-img-h) var(--name-cf-h) var(--username-cf-h) var(
+      --connected-vw-h) 50px;
+}
+#profile-img-config {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+#profile-img-config .wrap {
+    position: relative;
+    width: calc(var(--profile-img-h) - var(--gap));
+    height: calc(var(--profile-img-h) - var(--gap));
+}
+#profile-img-config .wrap #profile-edit-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: flex;
+    justify-content: flex-end;
+    transform: translate(.75rem, -.75rem);
+}
+#profile-img-config .wrap #profile-edit-img i {
+    font-size: 1.2rem;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    color: #ffffff;
+    background: #000000;
+}
+#profile-img-config .wrap #profile-img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    background: lightslategray;
+    border-radius: 5px;
+    overflow: hidden;
+}
+#profile-img-config .wrap #profile-img::before {
+    position: absolute;
+    content: '';
+    width: 80%;
+    height: 80%;
+    outline: solid 80px #c2c2c244;
+    border-radius: 100%;
+    z-index: 3;
+}
+#profile-img-config .wrap #profile-img i {
+    font-size: 9rem;
+    color: #000099;
+}
+/* --- name config */
+#name-config,
+#username-config {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+#name-config .wrap,
+#username-config .wrap {
+    position: relative;
+    width: calc(100% - var(--margin) * 2);
+    height: calc(100% - var(--margin) * 2);
+    margin: 5px;
+    display: grid;
+    place-items: center;
+    grid-template-columns: 60px auto 40px;
+}
+#username-config .wrap {
+    grid-template-columns: 90px auto 40px;
+}
+#name-config .wrap .view,
+#username-config .wrap .view {
+    position: relative;
+    width: 80%;
+    text-align: right;
+}
+#connected-view {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+#connected-view .wrap {
+    position: relative;
+    width: calc(100% - var(--margin) * 2);
+    height: calc(100% - var(--margin) * 2);
+    margin: 5px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    place-items: center;
+}
+#logout-box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+#logout-box .wrap {
+    position: relative;
+    width: calc(100% - var(--margin) * 2);
+    height: calc(100% - var(--margin) * 2);
+    margin: 5px;
+    display: grid;
+    place-items: center;
+}
+#logout-box .wrap  #logout {
+    position: relative;
+    padding: 10px 50px;
+    border-radius: 10px;
+    outline: none;
+    border: solid 2px #004b8c;
+    font-weight: 700;
+    background: #00165d;
+    color: #fff;
+}
+
+
+
+
+/* ------------- login content ------------ */
+#login-window {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  /* backdrop-filter: blur(3px); */
+  overflow: hidden;
+}
+#login-window.active {
+  display: flex;
+}
+#login-window .wrap {
+  position: relative;
+  padding: var(--gap);
+  background: #222;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--gap) / 2);
+  z-index: 10;
+}
+#login-window .wrap h1 {
+  color: #ffffff;
+  text-align: center;
+  margin: 5px;
+}
+#login-window .wrap #login-with-google,
+#login-window .wrap #login-with-phone {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+#login-window .wrap #login-with-google button,
+#login-window .wrap #login-with-phone button {
+  position: relative;
+  width: 270px;
+  height: 100%;
+  outline: none;
+  border: none;
+  cursor: var(--cursor);
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 1fr 5fr;
+  padding: 8px 15px;
+  border-radius: 15px;
+  background: #ff2600;
+  border: solid 2px #6f1100;
+}
+#login-window .wrap #login-with-phone button {
+  background: #002ab4;
+  border: solid 2px #00165d;
+}
+#login-window .wrap #login-with-google button i {
+  font-size: 1.4rem;
+}
+#login-window .wrap #login-with-google button p {
+  font-size: 1rem;
+  text-align: start;
+  font-weight: 600;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#login-window .wrap #login-with-phone button i {
+  font-size: 1.4rem;
+  color: #ffffff;
+}
+#login-window .wrap #login-with-phone button p {
+  font-size: 1rem;
+  text-align: start;
+  color: #ffffff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}

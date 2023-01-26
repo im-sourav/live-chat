@@ -1,19 +1,14 @@
-body {
+#home-contaner {
   position: relative;
-  width: 100vw;
+  width: var(--mn-chat-w);
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  background: #000;
   user-select: none;
 }
-#home-contaner {
-  position: relative;
-  width: var(--mn-chat-w);
-  height: var(--mn-chat-h);
-}
+
 #home-contaner .wapping {
   position: relative;
   width: 100%;
@@ -293,3 +288,5 @@ body {
   background: #0ff;
   border-radius: 20px;
 }
+
+
