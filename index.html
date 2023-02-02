@@ -23,9 +23,25 @@
 
         <div id="profile-img-config">
           <div class="wrap">
-            <div id="profile-edit-img">
-              <i class="fa-solid fa-pen"></i>
+
+            <div id="profile-edit-img" class="">
+              <div class="wrap">
+
+                <div id="upload-delete-btn">
+                  <div id="upload-img">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                  </div>
+                  <div id="delete-img">
+                    <i class="fa-solid fa-trash"></i>
+                  </div>
+                </div>
+
+                <div id="edit-option">
+                  <i class="fa-solid fa-pen"></i>
+                </div>
+              </div>
             </div>
+
             <div id="profile-img">
               <i class="fa-solid fa-user"></i>
             </div>
@@ -39,7 +55,7 @@
             <div id="edit-name-img"><i class="fa-solid fa-pen"></i></div>
           </div>
         </div>
-        
+
         <div id="username-config">
           <div class="wrap">
             <label for="username">Username </label>
@@ -50,7 +66,7 @@
 
         <div id="connected-view">
           <div class="wrap">
-            <label>Connected With </label>
+            <label>Connected with </label>
             <div id="connected-doc">im.souravx@gmail.com</div>
           </div>
         </div>
@@ -60,17 +76,40 @@
             <button id="logout">Logout</button>
           </div>
         </div>
-
       </div>
     </div>
 
-    <div id="login-window">
+    <div id="update-contaner" class="">
+      <div class="wapping">
+        <div id="titleName-close">
+          <div id="update-title"> Update Name </div>
+          <div id="close-update">
+            <i class="fa-solid fa-xmark"></i>
+          </div>
+        </div>
+        <br>
+        <div id="update-input-box" class="">
+          <div class="wrap">
+            <label id="update-name-ph">Enter new name</label>
+            <input type="text" id="update-input" spellcheck="false">
+          </div>
+        </div>
+        <div id="error-box">
+          <label id="error-label"></label>
+        </div>
+        <div id="save-button">
+          <button id="save-update">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="login-window" class="">
       <div class="wrap">
         <h1>Please Login</h1>
         <div id="login-with-google">
           <button>
             <i class="fa-brands fa-google"></i>
-            <p>Login with Google Acc.</p>
+            <p>Login with Google Acc...</p>
           </button>
         </div>
         <div id="login-with-phone">
@@ -78,6 +117,20 @@
             <i class="fa-solid fa-phone"></i>
             <p>Login with Phone Number</p>
           </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="alert-window" class="active">
+      <div class="alert-box">
+        <div class="alert-title">
+          <i class="fa-solid fa-question">Alert</i>
+          <span>
+            <i class="fa-solid fa-xmark"></i>
+          </span>
+        </div>
+        <div class="alert-message">
+          Hello chipe Are you sure you want to log out?
         </div>
       </div>
     </div>
