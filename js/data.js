@@ -11,7 +11,7 @@ let members = [
     },
     {
         id: 02,
-        name: "Arsalan Vijan",
+        name: "Arsalan",
     }
 ]
 
@@ -22,7 +22,7 @@ let messages = [
         time: "19:32",
         id: 01,
         senderId: 02,
-        name: "Arsalan Vijan",
+        name: "Arsalan",
     },
     {
         type: "one",
@@ -38,6 +38,6 @@ let messages = [
         time: "19:32",
         id: 03,
         senderId: 02,
-        name: "Arsalan Vijan",
+        name: "Arsalan",
     }
 ]

@@ -59,6 +59,7 @@
   grid-template-rows: 4fr 4fr;
   opacity: 0;
   transform: scaleY(0);
+  padding: 8px 5px;
   transition: linear 0.2s transform, linear 0.2s opacity;
 }
 #home-contaner .wapping header.active #add-new-content .wrap #toggle-content {
@@ -72,15 +73,15 @@
   position: relative;
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  place-items: center;
 }
 #add-new-content .wrap #toggle-content #add-member-input-box input {
   position: relative;
+  width: 60%;
   outline: none;
   border: none;
-  padding: 3px 6px;
+  padding: 5px 6px;
   border-radius: 5px;
   box-shadow: inset 1px 1px 2px #000000;
 }
@@ -89,7 +90,7 @@
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
 }
 #add-new-content .wrap #toggle-content #add-new-contact #add-new-contact-btn {
@@ -109,7 +110,7 @@
 }
 #add-new-content .wrap #cancle-new-btn-box #toggle-cancle-new-btn {
   position: relative;
-  padding: 3px 40px;
+  padding: 5px 40px;
   cursor: var(--cursor);
   border: none;
   border-radius: 3px;
@@ -192,6 +193,9 @@
   padding: var(--side);
   user-select: none;
 }
+#wrap-contacts .contact-box:nth-child(odd) {
+  background: rgba(0, 0, 0, 0.05);
+}
 #wrap-contacts .contact-box .wrap {
   position: relative;
   width: 100%;
@@ -211,12 +215,7 @@
 }
 .contact-box .wrap .contact-icon i {
   position: relative;
-  width: 80%;
-  height: 80%;
-  font-size: 1.5rem;
-  background: #fff;
-  outline: solid 1px #777;
-  border-radius: 100px;
+  font-size: 2.5rem;
 }
 
 .contact-box .wrap .contact-datas {
@@ -281,5 +280,3 @@
   background: #0ff;
   border-radius: 20px;
 }
-
-

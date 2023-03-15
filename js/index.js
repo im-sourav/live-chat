@@ -35,7 +35,7 @@ function setContacts() {
                     </div>
                     <div class="last-chat-no-of-msg">
                       <div class="last-chat">Last Chat</div>
-                      <div class="no-of-msg"><p>${Math.floor(Math.random() * 10)}</p></div>
+                      <div class="no-of-msg"><p>${Math.floor(Math.random() * 10) + 1}</p></div>
                     </div>
                   </div>
                 </div>
