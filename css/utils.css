@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* border: solid 1px #f00; */
+  outline: solid 1px #f002;
   font-family: Arial, Helvetica, sans-serif;
 }
 :root {
@@ -35,7 +35,7 @@
   --chat-gap: 0.5rem;
 
   /* ---- index header ---- */
-  --max-index-header-h: 120px;
+  --max-index-header-h: 150px;
   --min-index-header-h: 30px;
 
   /* --profile-r: 40px; */

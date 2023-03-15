@@ -56,7 +56,7 @@
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-rows: 4fr 3fr 4fr;
+  grid-template-rows: 4fr 4fr;
   opacity: 0;
   transform: scaleY(0);
   transition: linear 0.2s transform, linear 0.2s opacity;
@@ -74,7 +74,7 @@
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
 }
 #add-new-content .wrap #toggle-content #add-member-input-box input {
   position: relative;
@@ -83,16 +83,6 @@
   padding: 3px 6px;
   border-radius: 5px;
   box-shadow: inset 1px 1px 2px #000000;
-}
-#add-new-content .wrap #toggle-content #add-member-input-error {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: flex-start;
-  padding: 0 6px;
-  color: #f00;
-  align-items: center;
 }
 #add-new-content .wrap #toggle-content #add-new-contact {
   position: relative;
@@ -171,8 +161,11 @@
   border-radius: 10px;
   background: #ccc;
   cursor: var(--cursor);
-  font-size: 4rem;
-  padding: 5px;
+  padding: 5px 8px;
+}
+#home-contaner .wapping header #my-profile .wrap .center i {
+  position: relative;
+  font-size: 5rem;
 }
 
 /* ------------ contacts list --------------- */

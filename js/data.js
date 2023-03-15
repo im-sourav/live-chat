@@ -1,6 +1,7 @@
 let myDtls = {
     id: 01,
-    name: "Sourav Barui"
+    name: "Sourav Barui",
+    contacts: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 }
 // types "one", "many"
 let members = [

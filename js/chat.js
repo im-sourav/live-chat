@@ -43,10 +43,12 @@ function getMessages({ message, time, senderId, type, name }) {
 
 function setMessages() {
     scrollChatWrap.innerHTML = "";
+    let str = ``;
 
     messages.forEach((e) => {
-        scrollChatWrap.innerHTML += getMessages(e);
+        str += getMessages(e);
     })
+    scrollChatWrap.innerHTML = str;
 
     // update scroll
     maxScroll = scrollChat.scrollHeight - scrollChat.clientHeight;
