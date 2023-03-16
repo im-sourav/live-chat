@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="src/img/icon_icon_icon_.png">
+    <title>Profile</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="css/icon.css">
+    <link rel="stylesheet" href="css/utils.css" />
+    <link rel="stylesheet" href="css/profile.css" />
+    <script defer src="js/utils.js"></script>
+    <script defer src="js/profile.js"></script>
+  </head>
+  <body>
+    <div id="profile-section">
+      <div class="wapping">
+
+        <div id="profile-img-config">
+          <div class="wrap">
+
+            <div id="profile-edit-img" class="">
+              <div class="wrap">
+
+                <div id="upload-delete-btn">
+                  <div id="upload-img">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                  </div>
+                  <div id="delete-img">
+                    <i class="fa-solid fa-trash"></i>
+                  </div>
+                </div>
+
+                <div id="edit-option">
+                  <i class="fa-solid fa-pen"></i>
+                </div>
+              </div>
+            </div>
+
+            <div id="profile-img">
+              <i class="fa-solid fa-user"></i>
+            </div>
+          </div>
+        </div>
+
+        <div id="name-config">
+          <div class="wrap">
+            <label for="name">Name </label>
+            <div class="view">Sourav Barui</div>
+            <div id="edit-name-img"><i class="fa-solid fa-pen"></i></div>
+          </div>
+        </div>
+
+        <div id="username-config">
+          <div class="wrap">
+            <label for="username">Username </label>
+            <div class="view">sourav8040</div>
+            <div id="edit-username-img"><i class="fa-solid fa-pen"></i></div>
+          </div>
+        </div>
+
+        <div id="connected-view">
+          <div class="wrap">
+            <label>Connected with </label>
+            <div id="connected-doc">im.souravx@gmail.com</div>
+          </div>
+        </div>
+
+        <div id="logout-box">
+          <div class="wrap">
+            <button id="logout">Logout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="update-contaner" class="">
+      <div class="wapping">
+        <div id="titleName-close">
+          <div id="update-title"> Update Name </div>
+          <div id="close-update">
+            <i class="fa-solid fa-xmark"></i>
+          </div>
+        </div>
+        <br>
+        <div id="update-input-box" class="">
+          <div class="wrap">
+            <label id="update-name-ph">Enter new name</label>
+            <input type="text" id="update-input" spellcheck="false">
+          </div>
+        </div>
+        <div id="error-box">
+          <label id="error-label"></label>
+        </div>
+        <div id="save-button">
+          <button id="save-update">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="login-window" class="">
+      <div class="wrap">
+        <h1>Please Login</h1>
+        <div id="login-with-google">
+          <button>
+            <i class="fa-brands fa-google"></i>
+            <p>Login with Google Acc...</p>
+          </button>
+        </div>
+        <div id="login-with-phone">
+          <button>
+            <i class="fa-solid fa-phone"></i>
+            <p>Login with Phone Number</p>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="alert-window" class="">
+      <div class="alert-box">
+        <div class="alert-title">
+          <i class="fa-solid fa-question">Alert</i>
+          <span>
+            <i class="fa-solid fa-xmark"></i>
+          </span>
+        </div>
+        <div class="alert-message">
+          Hello chipe Are you sure you want to log out?
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

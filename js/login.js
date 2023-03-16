@@ -139,13 +139,12 @@ window.onload = () => {
     try {
       await signInWithEmailAndPassword(auth, allInputsData[0], allInputsData[1]);
       console.log("done");
+      window.location.replace("html/home.html")
     } catch (error) {
       
     }
-
-    //  setCookie("DREAMOVA-SUPPLIERS-STORAGE", JSON.stringify(obj), 1000000);
-    // location.replace("../index.html");
   })
+
   signupButton.addEventListener("click", async () => {
     if (!createFlag) return;
     try {
@@ -180,9 +179,6 @@ window.onload = () => {
   goLoginPag.addEventListener("click", () => {
     document.body.classList.toggle("active", true);
   })
-
-
-
 
 }
 
