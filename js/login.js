@@ -43,7 +43,12 @@ const b36to10 = b36 => parseInt(b36, 36);
 const b10to36 = b10 => b10.toString(36);
 const b64toString = b64 => btoa(b64);
 const stringToB64 = b64 => atob(b64);
-
+function b36t10(v) {
+  return parseInt(v, 36);
+}
+function b10t36(v) {
+  return Number(v).toString(36);
+}
 
 /* -------------------- formula ----------------------------------**
 ** const date = new Date();                                       **
@@ -85,6 +90,31 @@ window.onload = () => {
       action(i);
     })
   })
+
+
+const a = new AlertHTML({
+    title: "This is title",
+    titleIcon: "sbi-security",
+    message: "",
+    btnNm1: "Okay",
+    titleHeight: 60,
+    buttonHeitht: 45,
+    width: 290,
+    windowWidth: window.innerWidth,
+    windowHeight: window.innerHeight,
+
+});
+
+
+// a.clickOutside(() => {
+//     console.log("outside");
+// })
+// a.clickBtn1(() => {
+//     a.hide()
+// })
+// a.clickBtn2(() => {
+//     a.hide()
+// })
 
 
   const createOne = document.getElementById("create-one");
@@ -138,7 +168,7 @@ window.onload = () => {
     if (!loginFlag) return;
     try {
       await signInWithEmailAndPassword(auth, allInputsData[0], allInputsData[1]);
-      console.log("done");
+
       window.location.replace("html/home.html")
     } catch (error) {
       
@@ -162,7 +192,12 @@ window.onload = () => {
           type: "member",
           password: `%${b10t36(date)}${stringToB64(allInputsData[4])}%${b10t36(date)}`
         })
-        document.body.classList.toggle("active", true);
+        a.show();
+        a.setMassage(`Hello <b>${allInputsData[2]}</b> your account has been created successfully`)
+        a.clickBtn1(() => {
+          a.hide()
+          document.body.classList.toggle("active", true);
+        })
       }
     } catch (error) {
       console.log(error);

@@ -2,8 +2,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  outline: solid 1px #f002;
-  font-family: Arial, Helvetica, sans-serif;
+  /* outline: solid 1px #f002; */
+  font-family: "font32";
 }
 :root {
   --cursor: pointer;

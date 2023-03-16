@@ -10,6 +10,7 @@ const errorLabel = ID("error-label");
 const saveUpdate = ID("save-update");
 const updateInputBox = ID("update-input-box");
 const updateInput = ID("update-input");
+const backChatBtn = ID("back-chat");
 
 editOption.on(() => {
     profileEditImg.classList.toggle("active");
@@ -51,5 +52,6 @@ function updateNameUserWindow({ title, placeholder }) {
     updateTitle.innerText = title;
     updateNamePH.innerText = placeholder;
 }
-
-window.location.replace("html/home.html")
+backChatBtn.addEventListener("click", () => {
+    window.location.replace("home.html")
+})

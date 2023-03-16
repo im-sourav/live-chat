@@ -8,6 +8,7 @@ const indexHeader = ID("index-header");
 const scrollBox = ID("scroll-box");
 const profileBack = ID("profile-back");
 const wrapContacts = ID("wrap-contacts");
+const profileBtn = ID("profile-btn");
 
 
 toggleCancleNewBtn.on(() => {
@@ -55,4 +56,8 @@ contactBox.on((e) => {
 
 profileBack.on(() => {
     smoothScroll(scrollBox, "scrollLeft", -bodyMaxScroll, 100);
+})
+
+profileBtn.addEventListener("click", () => {
+    window.location.replace("profile.html")
 })

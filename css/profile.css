@@ -1,3 +1,6 @@
+* {
+  /* outline: solid 1px red; */
+}
 body {
   position: relative;
   display: flex;
@@ -27,11 +30,26 @@ body {
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-rows:
+  grid-template-rows: 50px
     var(--profile-img-h) var(--name-cf-h) var(--username-cf-h) var(
       --connected-vw-h
     )
     50px;
+}
+.profile-title {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 50px auto;
+  place-items: center;
+}
+.profile-title i {
+  font-size: 2rem;
+  cursor: pointer;
+}
+.profile-title p {
+  font-size: 1.2rem;
 }
 #profile-img-config {
   position: relative;

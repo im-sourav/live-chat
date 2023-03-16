@@ -18,18 +18,24 @@ function CE({ tag = "div", parent = document.body, cls, id, text, html, css }) {
 
 // CE --> create Element
 class AlertHTML {
-    constructor({ windowWidth = window.innerWidth, windowHeight = window.innerHeight, width = 250, titleHeight = 50, buttonHeitht = 50, title, message, btnNm1, btnNm2, parent }) {
+    constructor({ windowWidth = window.innerWidth, titleIcon, windowHeight = window.innerHeight, width = 250, titleHeight = 50, buttonHeitht = 50, title, message, btnNm1, btnNm2, parent }) {
         this.windowWidth = windowWidth;
         this.windowHeight = windowHeight;
         this.width = width;
         this.titleHeight = titleHeight;
         this.buttonHeitht = buttonHeitht;
         this.titleText = title;
+        this.titleIcon = titleIcon;
         this.messageText = message;
         this.btnNm1 = btnNm1;
         this.btnNm2 = btnNm2;
         this.parent = parent;
 
+
+        // element
+        this.msgEle = undefined;
+        this.btn1Ele = undefined;
+        this.btn2Ele = undefined;
 
         this.#createHtml();//  Create Html -----------
 
@@ -47,17 +53,17 @@ class AlertHTML {
         /**/this.innar = CE({ cls: "_-_a-inner", parent: this.box })
 
         /**/    this.title = CE({ cls: "_-_a-title", parent: this.innar })
-        /**/        CE({ tag: "i", cls: "sbi-notification", parent: this.title })
+        /**/        CE({ tag: "i", cls: this.titleIcon || "sbi-notification", parent: this.title })
         /**/        CE({ tag: "p", html: this.titleText, parent: this.title })
 
         /**/    this.message = CE({ cls: "_-_a-message", parent: this.innar })
-        /**/        CE({ tag: "p", html: this.messageText, parent: this.message })
+        /**/        this.msgEle = CE({ tag: "p", html: this.messageText, parent: this.message })
 
         /**/    this.buttons = CE({ cls: "_-_a-buttons", parent: this.innar })
         /**/        this.button1 = CE({ cls: "_-_a-btn", parent: this.buttons })
-        /**/            CE({ tag: "p", html: this.btnNm1, parent: this.button1 })
+        /**/            this.btn1Ele = CE({ tag: "p", html: this.btnNm1, parent: this.button1 })
         /**/        this.button2 = CE({ cls: "_-_a-btn _-_a-b-last", parent: this.buttons })
-        /**/            CE({ tag: "p", html: this.btnNm2, parent: this.button2 })
+        /**/            this.btn2Ele = CE({ tag: "p", html: this.btnNm2, parent: this.button2 })
     }
 
     #css() {
@@ -79,10 +85,11 @@ class AlertHTML {
             opacity: 0;
             justify-content: center;
             align-items: center;
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(7px);
             transition: 0s;
             transition-delay: 0.2s;
+            z-index: 100;
           }
           ._-_a-box.active {
             transition: 0s;
@@ -144,7 +151,7 @@ class AlertHTML {
             width: 100%;
             height: 100%;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 0fr;
             place-items: center;
             overflow: hidden;
           }
@@ -153,7 +160,7 @@ class AlertHTML {
             position: relative;
             width: calc(100% - var(--h) * 1.5);
             height: calc(100% - var(--h) * 2);
-            margin: var(--h);
+            margin: calc(var(--h) * 2);
             margin-right: calc(var(--h) / 2);
             display: grid;
             place-items: center;
@@ -231,8 +238,7 @@ class AlertHTML {
 
     show() {
         this.box.classList.add("active");
-    }
-    
+    }    
     hide() {
         this.box.classList.remove("active");
     }
@@ -253,6 +259,18 @@ class AlertHTML {
         this.box.addEventListener("click", () => {
             fun();
         })
+    }
+
+    setMassage(massage) {
+      this.msgEle.innerHTML = massage;
+    }
+
+    button1SetName(name) {
+      this.btn1Ele.innerHTML = name;
+    }
+    
+    button2SetName(name) {
+      this.btn2Ele.innerHTML = name;
     }
 }
 
