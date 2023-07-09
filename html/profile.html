@@ -6,15 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" type="image/png" href="src/img/icon_icon_icon_.png">
     <title>Profile</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+
+    <link rel="stylesheet"href="../icons/css/icon.css">
     <link rel="stylesheet" href="../css/font.css">
-    <link rel="stylesheet" href="../css/icon.css">
     <link rel="stylesheet" href="../css/utils.css" />
     <link rel="stylesheet" href="../css/profile.css" />
     <script defer src="../js/utils.js"></script>
@@ -37,21 +31,22 @@
 
                 <div id="upload-delete-btn">
                   <div id="upload-img">
-                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <i class="sbi-file_upload"></i>
                   </div>
                   <div id="delete-img">
-                    <i class="fa-solid fa-trash"></i>
+                    <i class="sbi-delete"></i>
                   </div>
                 </div>
 
                 <div id="edit-option">
-                  <i class="fa-solid fa-pen"></i>
+                  <i class="sbi-pencil1"></i>
                 </div>
               </div>
             </div>
 
-            <div id="profile-img">
-              <i class="fa-solid fa-user"></i>
+            <div id="profile-img" class="">
+              <i class="sbi-user1"></i>
+              <img src="" id="profileImage">
             </div>
           </div>
         </div>
@@ -60,7 +55,9 @@
           <div class="wrap">
             <label for="name">Name </label>
             <div class="view">Sourav Barui</div>
-            <div id="edit-name-img"><i class="fa-solid fa-pen"></i></div>
+            <div id="edit-name-img">
+              <i class="fa-solid fa-pen"></i>
+            </div>
           </div>
         </div>
 
@@ -109,7 +106,7 @@
           <button id="save-update">Save</button>
         </div>
       </div>
-    </div>
+    </div> 
 
     <div id="login-window" class="">
       <div class="wrap">
@@ -129,6 +126,29 @@
       </div>
     </div>
 
+    <div id="imageSelection" class="">
+      <div id="canvasBox">
+        <canvas id="cvs"></canvas>
+        <div id="selector">
+          <div class="corner" id="topLeft"></div>
+          <div class="corner" id="bottomLeft"></div>
+          <div class="corner" id="bottomRight"></div>
+          <div class="corner" id="topRight"></div>
+          <div id="midil"></div>
+        </div>
+      </div>
+
+      <div id="upload-close-btn-box">
+        <div class="button-upload">
+          <input type="submit" class="button-upload" id="uploadCancleBtn" value="Cancle">
+        </div>
+        <div class="button-upload">
+          <input type="submit" class="button-upload" id="uploadImageBtn" value="Upload">
+        </div>
+      </div>
+    </div>
+
+
     <div id="alert-window" class="">
       <div class="alert-box">
         <div class="alert-title">
@@ -142,5 +162,7 @@
         </div>
       </div>
     </div>
+
+    <input type="file" accept=".jpg,.jpeg,.gif,.png" id="fileInput">
   </body>
 </html>

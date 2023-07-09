@@ -2,13 +2,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* outline: solid 1px #f002; */
-  font-family: "font32";
+  /* outline: solid 1px #f004; */
+  font-family: Righteous;
 }
 :root {
   --cursor: pointer;
 
-  --mn-chat-w: 360px;
+  --mn-chat-w: min(80vw, 80vh);
   /* --mn-chat-h: 694px; */
   --mn-chat-h: 100vh;
 
@@ -102,4 +102,75 @@ body {
   overflow: hidden;
 }
 
+/* ------------ Star ------------ */
+.stars {
+	--time: 1s;
+	position: absolute;
+	width: var(--min);
+	height: var(--min);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	opacity: 0.2;
+	animation: rotate calc(var(--time) * 10) infinite linear;
+}
+@keyframes rotate {
+	0% {
+		transform: rotate(0deg);
+	}
+	99% {
+		transform: rotate(359deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+.stars i {
+	position: absolute;
+	display: grid;
+	place-items: center;
+	animation-duration: var(--time);
+	animation-delay: calc(var(--time) * 0);
+	font-size: calc(var(--min) * 0.1);
+	animation-fill-mode: backwards;
+	color: transparent;
+	animation-name: stars;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+	z-index: 5;
+}
+.stars i:nth-child(2) {
+	animation-delay: calc(var(--time) * 0.2);
+	font-size: calc(var(--min) * 0.3);
+	z-index: 4;
+}
+.stars i:nth-child(3) {
+	animation-delay: calc(var(--time) * 0.4);
+	font-size: calc(var(--min) * 0.5);
+	z-index: 3;
+}
+.stars i:nth-child(4) {
+	animation-delay: calc(var(--time) * 0.6);
+	font-size: calc(var(--min) * 0.7);
+	z-index: 2;
+}
+.stars i:nth-child(5) {
+	animation-delay: calc(var(--time) * 0.8);
+	font-size: calc(var(--min) * 0.9);
+	z-index: 1;
+}
 
+@keyframes stars {
+	0% {
+		color: #fff;
+	}
+	50% {
+		color: #000;
+	}
+	99% {
+		color: #fff;
+	}
+	100% {
+		color: #fff;
+	}
+}
