@@ -1,10 +1,6 @@
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-analytics.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js";
-import {
-   getAuth,
-   signInWithEmailAndPassword,
-   createUserWithEmailAndPassword
-} from "https://www.gstatic.com/firebasejs/9.6.7/firebase-auth.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-auth.js";
 import { set, get, getDatabase, query, ref, update, orderByChild, equalTo } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-database.js";
 
 
@@ -34,7 +30,8 @@ window.onload = () => {
       if (!oldGuestId) { // create new guest
          await set(dbRef, {
             userId: newGuest.id,
-            date: newGuest.date
+            date: newGuest.date,
+            friends: 0
          }).then(() => {
             console.log("Data sended successfully");
             location.replace("./html/home.html");

@@ -1,20 +1,5 @@
-const editOption = ID("edit-option");
-const profileEditImg = ID("profile-edit-img");
-const editNameImg = ID("edit-name-img");
-const editUsernameImg = ID("edit-username-img");
-const updateContaner = ID("update-contaner");
-const closeUpdate = ID("close-update");
-const updateTitle = ID("update-title");
-const updateNamePH = ID("update-name-ph");
-const errorLabel = ID("error-label");
-const saveUpdate = ID("save-update");
-const updateInputBox = ID("update-input-box");
-const updateInput = ID("update-input");
-const backChatBtn = ID("back-chat");
+/* -------------- global variable start ------------ */
 
-const uploadImg = ID("upload-img"); // upload dutton
-
-/* -------------- event handaler variable start ------------ */
 const P = {
     topLeft: false,
     bottomLeft: false,
@@ -32,24 +17,14 @@ const sides = {
     top: 48,
     bottom: 48
 }
-/* -------------- event handaler variable end ------------ */
 
-editOption.on(() => {
-    profileEditImg.classList.toggle("active");
-})
+const { width: Width, height: Height } = canvasBox.getBoundingClientRect();
+const minSelectorSize = 60;
 
-updateInput.on("keyup", (e) => {
-    let val = e.target.value;
-    if (!val.length || !val) {
-        updateInputBox.classList.remove("active");
-        return;
-    } else {
-        updateInputBox.classList.add("active");
-    }
+/* -------------- global variable end ------------ */
 
-})
 
-uploadImg.on(() => {
+imageUpload.addEventListener("click", () => {
     fileInput.click();
 })
 
@@ -58,35 +33,25 @@ uploadCancleBtn.addEventListener("click", () => {
     fileInput.value = null;
 });
 
-
-let updateFlag = 0;
-
-editNameImg.on(() => {
-    updateFlag = 0;
-    updateNameUserWindow(
-        { title: "Update Name", placeholder: "Enter new name" }
-    )
-})
-editUsernameImg.on(() => {
-    updateFlag = 1;
-    updateNameUserWindow(
-        { title: "Update Username", placeholder: "Enter new username" }
-    )
-})
-
-closeUpdate.on(() => {
-    updateContaner.classList.remove("active");
-})
-
-function updateNameUserWindow({ title, placeholder }) {
-    updateContaner.classList.add("active");
-    updateTitle.innerText = title;
-    updateNamePH.innerText = placeholder;
-}
-backChatBtn.addEventListener("click", () => {
-    window.location.replace("home.html")
-})
-
+/* ------------- user profile setting ------------- */
+profileOpenClose.addEventListener("click", () => {
+    myProfileAndFindUser.classList.toggle("show");
+ });
+ profielImage.addEventListener("click", () => {
+    myProfileAndFindUser.classList.add("one");
+    myProfileAndFindUser.classList.remove("two");
+ });
+ closeProfile.addEventListener("click", () => {
+    myProfileAndFindUser.classList.remove("one");
+ });
+ searchIcon.addEventListener("click", () => {
+    myProfileAndFindUser.classList.remove("one");
+    myProfileAndFindUser.classList.add("two");
+ });
+ 
+ imageEditeOptions.addEventListener("click", () => {
+    imageEditeOptions.classList.toggle("active");
+ });
 
 
 // -------------- image selection --------------
@@ -98,8 +63,7 @@ fileInput.addEventListener("change", (e) => {
 
     const c = cvs.getContext("2d");
 
-    fileNames = [];
-    fileNames.push(e.target.files[0].name);
+    let fileNames = e.target.files[0].name;
     const img = new Image();
     const Img = URL.createObjectURL(e.target.files[0]);
     img.src = Img;
@@ -125,7 +89,7 @@ fileInput.addEventListener("change", (e) => {
         c.drawImage(img, (max - w) / 2, (max - h) / 2, w, h);
 
         function eventHandler() {
-            profileEditImg.classList.toggle("active");
+            
             const wRatio = w / canvasBox.clientWidth;
             const hRatio = h / canvasBox.clientHeight;
 
@@ -156,8 +120,8 @@ fileInput.addEventListener("change", (e) => {
 
             const dataUrl = cvs.toDataURL("image/jpeg", 1.0)
             console.log(dataUrl);
-            profileImage.src = dataUrl;
-            ID("profile-img").classList.add("active");
+            profielImage.classList.add("active");
+            profileImg.src = dataUrl;
             imageSelection.classList.remove("active");
         }
         uploadImageBtn.addEventListener("click", eventHandler, true);
@@ -252,10 +216,6 @@ function selectorMove({ x, y }) {
     pre.x = x;
     pre.y = y;
 }
-
-
-const { width: Width, height: Height } = canvasBox.getBoundingClientRect();
-const minSelectorSize = 60;
 
 // control sides changes
 function selectionChanged({ x, y }) {

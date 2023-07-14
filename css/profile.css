@@ -1,539 +1,383 @@
-* {
-	/* outline: solid 1px red; */
+/* ----------------- profile and find user ---------------- */
+#myProfileAndFindUser {
+	--width-u: 100px;
+	---height-u: 40px;
+	--radius-u: 20px;
+	--img-width: 100px;
+	--img-margin: 20px;
+
+	position: absolute;
+	width: var(--width-u);
+	height: var(---height-u);
+	display: grid;
+	grid-auto-flow: column;
+	background: #dddddd;
+	outline: solid 1px #0007;
+	border-bottom-left-radius: var(--radius-u);
+	border-bottom-right-radius: var(--radius-u);
+	left: calc(50% - var(--width-u) / 2);
+	top: calc(var(---height-u) * -1 - 3px);
+	transition: ease-in-out 300ms top;
+	z-index: 2;
 }
-body {
+#myProfileAndFindUser.show {
+	top: 0;
+}
+#myProfileAndFindUser #userProfileBox,
+#myProfileAndFindUser #searchUserBox {
 	position: relative;
 	display: flex;
+	width: calc(var(--width-u) / 2);
+	height: calc(var(---height-u));
+	scale: 1;
 	justify-content: center;
 	align-items: center;
-}
-:root {
-	--gap: 2rem;
-	--margin: 5px;
-	--profile-img-h: 200px;
-	--name-cf-h: 60px;
-	--username-cf-h: 60px;
-	--connected-vw-h: 70px;
-	--floting-win-w: 250px;
-	--icon-w: 50px;
-	--title-h: 40px;
-	--update-inp-h: 50px;
-	--error-h: 20px;
-}
-#profile-section {
-	position: relative;
-	width: 100%;
-	height: 100%;
-}
-#profile-section .wapping {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	display: grid;
-	grid-template-rows:
-		50px
-		var(--profile-img-h) var(--name-cf-h) var(--username-cf-h) var(
-			--connected-vw-h
-		)
-		50px;
-}
-.profile-title {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	display: grid;
-	grid-template-columns: 50px auto;
-	place-items: center;
-}
-.profile-title i {
-	font-size: 2rem;
-	cursor: pointer;
-}
-.profile-title p {
-	font-size: 1.2rem;
-}
-#profile-img-config {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	display: grid;
-	place-items: center;
-}
-#profile-img-config .wrap {
-	position: relative;
-	width: calc(var(--profile-img-h) - var(--gap));
-	height: calc(var(--profile-img-h) - var(--gap));
-}
-#profile-img-config .wrap #profile-edit-img {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	z-index: 4;
-	display: flex;
-	justify-content: flex-end;
-	transform: translate(0.75rem, -0.75rem);
-}
-#profile-img-config .wrap #profile-edit-img .wrap {
-	width: 35px;
-	height: 35px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border-radius: 15px;
-	background: #000000aa;
-}
-#profile-img-config .wrap #profile-edit-img .wrap #edit-option {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	display: grid;
-	place-items: center;
-  cursor: pointer;
-}
-#profile-img-config .wrap #profile-edit-img .wrap #edit-option i {
-	font-size: 1.2rem;
-	color: #ffffff;
-}
-#profile-img-config .wrap #profile-img {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	display: grid;
-	place-items: center;
-	background: lightslategray;
-	border-radius: 5px;
-	border: solid 5px #ccc;
-	overflow: hidden;
-}
-#profile-img-config .wrap #profile-img::before {
-	position: absolute;
-	content: "";
-	width: 100%;
-	height: 100%;
-	outline: solid 80px #00000077;
-	border-radius: 100%;
 	z-index: 3;
+	transition: linear 200ms scale;
 }
-#profile-img-config .wrap #profile-img i {
-  display: block;
-	font-size: 9rem;
-	color: #000099;
-}
-#profile-img-config .wrap #profile-img.active i {
-  display: none;
-}
-#profile-img-config .wrap #profile-img img {
-  display: none;
-	position: relative;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-#profile-img-config .wrap #profile-img.active img {
-  display: block;
-}
-#profile-edit-img .wrap #upload-delete-btn {
-	position: absolute;
-	z-index: -1;
-	width: var(--icon-w);
-	height: calc(var(--icon-w) * 2 + var(--margin) * 2);
-	display: flex;
-	flex-direction: column;
-	gap: calc(var(--margin) * 2);
-	transform: translateX(0) translateY(0) scale(0);
-	transition: transform linear 0.3s;
-}
-
-#profile-edit-img.active .wrap #upload-delete-btn {
-	transform: translateX(calc(var(--icon-w) + var(--margin) * 2))
-		translateY(calc(var(--icon-w) + var(--margin))) scale(1);
-}
-#upload-delete-btn #upload-img,
-#upload-delete-btn #delete-img {
-	position: relative;
-	width: var(--icon-w);
-	height: var(--icon-w);
-	display: grid;
-	place-items: center;
-	background: #004b8c;
-	border-radius: 100%;
-  cursor: pointer;
-}
-#upload-delete-btn #upload-img i,
-#upload-delete-btn #delete-img i {
-	font-size: 1.5rem;
-	color: #ffffff;
-	text-shadow: 0 0 1px #000;
-}
-#upload-delete-btn #delete-img i {
-	color: #ff0000;
-}
-
-/* --- name config */
-#name-config,
-#username-config {
-	position: relative;
-	width: 100%;
-	height: 100%;
-}
-#name-config .wrap,
-#username-config .wrap {
-	position: relative;
-	width: calc(100% - var(--margin) * 2);
-	height: calc(100% - var(--margin) * 2);
-	margin: 5px;
-	display: grid;
-	place-items: center;
-	grid-template-columns: 60px auto 40px;
-}
-#username-config .wrap {
-	grid-template-columns: 90px auto 40px;
-}
-#name-config .wrap .view,
-#username-config .wrap .view {
-	position: relative;
-	width: 80%;
-	text-align: right;
-}
-#connected-view {
-	position: relative;
-	width: 100%;
-	height: 100%;
-}
-#connected-view .wrap {
-	position: relative;
-	width: calc(100% - var(--margin) * 2);
-	height: calc(100% - var(--margin) * 2);
-	margin: 5px;
-	display: grid;
-	grid-template-rows: 1fr 1fr;
-	place-items: center;
-}
-#logout-box {
-	position: relative;
-	width: 100%;
-	height: 100%;
-}
-#logout-box .wrap {
-	position: relative;
-	width: calc(100% - var(--margin) * 2);
-	height: calc(100% - var(--margin) * 2);
-	margin: 5px;
-	display: grid;
-	place-items: center;
-}
-#logout-box .wrap #logout {
-	position: relative;
-	padding: 10px 50px;
-	border-radius: 10px;
-	outline: none;
-	border: solid 2px #004b8c;
-	font-weight: 700;
-	background: #00165d;
-	color: #fff;
-}
-
-/* ------------- login content ------------ */
-#login-window {
-	position: fixed;
-	width: 100vw;
-	height: 100vh;
-	display: none;
-	justify-content: center;
-	align-items: center;
-	background: #00000099;
-	backdrop-filter: blur(3px);
-	overflow: hidden;
-}
-#login-window.active {
-	display: flex;
-}
-#login-window .wrap {
-	position: relative;
-	padding: var(--gap);
-	background: #222a;
-	border-radius: 10px;
-	display: flex;
-	flex-direction: column;
-	gap: calc(var(--gap) / 2);
-	border-style: solid;
-	border-color: #909090 #222222 #222222 #909090;
-	border-width: 2px;
-	z-index: 10;
-}
-#login-window .wrap h1 {
-	color: #ffffff;
-	text-align: center;
-	margin: 5px;
-}
-#login-window .wrap #login-with-google,
-#login-window .wrap #login-with-phone {
-	position: relative;
-	width: 100%;
-	height: 100%;
-}
-
-#login-window .wrap #login-with-google button,
-#login-window .wrap #login-with-phone button {
-	position: relative;
-	width: var(--floting-win-w);
-	height: 100%;
-	outline: none;
-	border: none;
-	cursor: var(--cursor);
-	display: grid;
-	justify-content: center;
-	align-items: center;
-	grid-template-columns: 1fr 5fr;
-	padding: 10px 15px;
-	border-radius: 15px;
-	background: #ff2600;
-	border: solid 2px #6f1100;
-}
-#login-window .wrap #login-with-phone button {
-	background: #002ab4;
-	border: solid 2px #00165d;
-}
-#login-window .wrap #login-with-google button i {
-	font-size: 1.4rem;
-}
-#login-window .wrap #login-with-google button p,
-#login-window .wrap #login-with-phone button p {
-	font-size: 0.9rem;
-	text-align: start;
-	font-weight: 600;
-	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-#login-window .wrap #login-with-phone button p {
-	color: #ffffff;
-	font-weight: 300;
-}
-#login-window .wrap #login-with-phone button i {
-	font-size: 1.3rem;
-	color: #ffffff;
-}
-
-/* ------------------ update contaner ------------------- */
-#update-contaner {
-	position: fixed;
-	width: 100vw;
-	height: 100vh;
-	inset: 0;
-	display: none;
-	justify-content: center;
-	align-items: center;
-	background: #000000cc;
-	backdrop-filter: blur(5px);
-	z-index: 10;
-}
-#update-contaner.active {
-	display: flex;
-}
-#update-contaner .wapping {
-	position: relative;
-	width: var(--floting-win-w);
-	height: auto;
-	padding: calc(var(--margin) * 2);
-	border-radius: calc(var(--margin) * 2);
-	border-style: solid;
-	border-color: #909090 #222222 #222222 #909090;
-	border-width: 2px;
-	background: #dddb;
-	overflow: hidden;
-}
-#update-contaner .wapping #titleName-close {
-	position: relative;
-	width: 100%;
-	height: var(--title-h);
-	display: grid;
-	grid-template-columns: 5fr 1fr;
-	place-items: center;
-}
-#update-contaner .wapping #titleName-close #update-title {
-	font-size: 1.2rem;
-	font-weight: 700;
-	color: #000;
-}
-#update-contaner .wapping #titleName-close #close-update {
-	position: relative;
-	width: 80%;
-	height: 80%;
-	display: grid;
-	place-items: center;
-	border-radius: 100%;
-	font-size: 1.5rem;
-	font-weight: 400;
-	background: #bbb;
-	color: #f00;
-	text-shadow: 0 0 1px #000;
-}
-#update-contaner .wapping #update-input-box {
-	position: relative;
-	width: 100%;
-	height: var(--update-inp-h);
-	padding: calc(var(--margin) * 1.5) 0;
-}
-#update-contaner .wapping #update-input-box .wrap {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	display: grid;
-	background: #ffff;
-	box-shadow: inset 1px 1px 3px #000;
-	border-radius: 6px;
-	place-items: center;
-}
-#update-contaner .wapping #update-input-box .wrap label {
-	position: absolute;
+#myProfileAndFindUser.show #userProfileBox,
+#myProfileAndFindUser.show #searchUserBox {
 	width: auto;
 	height: auto;
-	z-index: 1;
-	left: 0;
-	color: #333;
-	padding: 0 6px;
-	background: transparent;
-	border-radius: 15px;
-	font-size: 1rem;
-	transform: translateX(0);
-	transition: top linear 0.2s, color linear 0.2s, background linear 0.2s,
-		transform linear 0.2s, box-shadow linear 0.2s, font-size linear 0.2s;
+	scale: 1;
 }
-#update-contaner .wapping #update-input-box.active .wrap label {
-	background: #fffa;
-	padding: 4px 8px;
-	font-size: 0.8rem;
-	transform: translateX(5px);
-	box-shadow: 0 0 2px #000;
-	top: calc((var(--update-inp-h) - var(--margin)) / -2);
-	color: #000000;
+#myProfileAndFindUser.one #userProfileBox,
+#myProfileAndFindUser.two #searchUserBox {
+	scale: 1;
 }
-#update-contaner .wapping #update-input-box .wrap input {
+#myProfileAndFindUser.two #userProfileBox,
+#myProfileAndFindUser.one #searchUserBox {
+	scale: 0;
+}
+#myProfileAndFindUser #profielImage,
+#myProfileAndFindUser #searchIcon {
 	position: relative;
-	width: 100%;
-	height: 100%;
-	outline: none;
-	border: none;
-	z-index: 2;
-	font-size: 1rem;
-	background: transparent;
-	padding: 0 6px;
-}
-#update-contaner .wapping #error-box {
-	position: relative;
-	width: 100%;
-	height: var(--error-h);
-	display: flex;
-	align-items: center;
-	font-size: 12px;
-	color: #f00;
-	padding: 0 5px;
-}
-#update-contaner .wapping #save-button {
-	position: relative;
-	width: 100%;
-	height: var(--update-inp-h);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-#update-contaner .wapping #save-button button {
-	position: relative;
-	outline: none;
-	border: none;
-	padding: 6px 30px;
-	border-radius: 10px;
-	background: #002ab4;
-	font-weight: 600;
-	color: #fff;
-	font-size: 1.2rem;
-	border: solid 1px #00165d;
-}
-
-/* ----- alert window -------- */
-#alert-window {
-	position: fixed;
-	width: 100vw;
-	height: 100vh;
-	left: 0;
-	top: 0;
-	z-index: 15;
-	display: none;
-	background: rgba(100, 100, 100, 0.8);
-	backdrop-filter: blur(3px);
-}
-#alert-window.active {
+	width: 30px;
+	height: 30px;
 	display: grid;
 	place-items: center;
+	border: solid 2px #006eff;
+	border-radius: 100px;
+	box-shadow: 0 0 3px #000000;
+	background: #ffffff;
+	cursor: pointer;
+	overflow: hidden;
+	top: 0;
+	transition: linear 400ms width, linear 400ms height, linear 400ms top,
+		linear 400ms border-radius;
+	z-index: 3;
 }
-#alert-window .alert-box {
-	position: relative;
-	width: 250px;
-	height: 160px;
-	background: #eee;
-	backdrop-filter: blur(3px);
-	border-radius: 6px;
-	display: grid;
-	grid-template-rows: 10fr 20fr 10fr;
+#myProfileAndFindUser.one #profielImage,
+#myProfileAndFindUser.tow #searchIcon {
+	top: calc(var(--img-margin) + (max(500px, 100vh) - 500px) / 2);
+	border-radius: 10px;
+	width: 100px;
+	height: 100px;
+}
+#myProfileAndFindUser.one #profielImage,
+#myProfileAndFindUser.tow #searchIcon {
+	top: calc(var(--img-margin) + (max(500px, 100vh) - 500px) / 2);
+	border-radius: 10px;
+	width: 100px;
+	height: 100px;
 	overflow: hidden;
 }
-#alert-window .alert-box .alert-title {
-	position: relative;
-	display: grid;
-	grid-template-columns: 20fr 5fr;
+#myProfileAndFindUser #profielImage #imageEdite {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: none;
 	place-items: center;
+	z-index: 1;
 }
-#alert-window .alert-box .alert-title .sb-close {
-	color: #f00;
-	font-size: 1rem;
-	text-shadow: 0 0 1px #000, 0 0 2px #000;
+#myProfileAndFindUser.one #profielImage #imageEdite {
+	display: grid;
 }
-#alert-window .alert-box .alert-title span {
-	color: #000;
-	display: flex;
-}
-#alert-window .alert-box .alert-title span .sb-alert {
-	color: #000;
-	margin-left: 20%;
-	font-size: 1.4rem;
-}
-#alert-window .alert-box .alert-message {
+#profielImage #imageEdite #imageEditeOptions {
 	position: relative;
 	width: 100%;
 	height: 100%;
 	display: flex;
+	justify-content: space-evenly;
 	align-items: center;
-	text-align: center;
-	border-bottom: solid 1px #999;
+	background: transparent;
+	backdrop-filter: blur(0px);
+	cursor: pointer;
+	transition: linear 300ms background, linear 300ms backdrop-filter;
 }
-#alert-window .alert-box .a-btns {
+#profielImage #imageEdite #imageEditeOptions.active {
+	background: #00000077;
+	backdrop-filter: blur(3px);
+	cursor: auto;
+}
+#profielImage #imageEdite #imageEditeOptions .img-btn {
+	position: relative;
+	width: calc(var(--img-width) / 3);
+	height: calc(var(--img-width) / 3);
+	border-radius: 100px;
+	display: grid;
+	place-items: center;
+	background: #eeeeee;
+	scale: 0;
+	box-shadow: 1px 1px 3px #c5c5c5, inset 1px 1px 3px #ffffff,
+		-1px -1px 3px #ffffff, inset -1px -1px 3px #b4b4b4;
+	transition: linear 300ms scale;
+	cursor: pointer;
+}
+#profielImage #imageEdite #imageEditeOptions.active .img-btn {
+	scale: 1;
+}
+#profielImage #imageEdite #imageEditeOptions .img-btn i {
+	font-size: 24px;
+	text-shadow: 0 0 1px #000000;
+	color: #0029ff;
+}
+#profielImage #imageEdite #imageEditeOptions .img-btn:last-child i {
+	color: #ff0000;
+}
+#myProfileAndFindUser #profielImage i,
+#myProfileAndFindUser #searchIcon i {
 	position: relative;
 	width: 100%;
 	height: 100%;
 	display: grid;
-	grid-template-columns: 10fr 10fr;
 	place-items: center;
-	background: #999;
-	cursor: pointer;
-	gap: 1px;
+	font-size: 24px;
+	color: #006eff;
+	transition: linear 400ms font-size;
 }
-#alert-window .alert-box .a-btns p {
+#myProfileAndFindUser.one #profielImage i,
+#myProfileAndFindUser.tow #searchIcon i {
+	font-size: 60px;
+}
+#myProfileAndFindUser #profielImage.active .mn-img,
+#myProfileAndFindUser #profielImage .mn-i {
+	display: grid;
+}
+#myProfileAndFindUser #profielImage .mn-img,
+#myProfileAndFindUser #profielImage.active .mn-i {
+	display: none;
+}
+#myProfileAndFindUser #profielImage.active .mn-img {
 	position: relative;
 	width: 100%;
 	height: 100%;
+	background-position: center;
+	background-size: cover;
+}
+#myProfileAndFindUser #profileOpenClose {
+	--sz-porfile: 26px;
+	position: absolute;
+	background: #dddddd;
+	left: calc(var(--width-u) / 2 - var(--sz-porfile) / 2);
+	top: var(---height-u);
+	width: calc(var(--sz-porfile) + 4px);
+	height: calc(var(--sz-porfile) - 4px);
 	display: flex;
-	gap: 3px;
 	justify-content: center;
 	align-items: center;
-	background: #fff;
+	border: solid 1px #0007;
+	border-top: none;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	cursor: pointer;
+	z-index: 1;
 }
-#alert-window .alert-box .a-btns .alert-no i {
-	color: #000;
-	font-size: 0.9rem;
+#myProfileAndFindUser #profileOpenClose i,
+#myProfileAndFindUser.show #profileOpenClose:hover i {
+	font-size: 24px;
+	transform: rotateX(0deg);
+	transition: linear 200ms transform;
 }
-#alert-window .alert-box .a-btns .alert-yes i {
-	color: #000;
-	font-size: 1.2rem;
+#myProfileAndFindUser #profileOpenClose:hover i,
+#myProfileAndFindUser.show #profileOpenClose i {
+	transform: rotateX(180deg);
+}
+#myProfileAndFindUser #porfileSetting {
+	position: absolute;
+	display: none;
+	width: 0;
+	height: 0;
+	top: 0;
+	scale: 0;
+	opacity: 0;
+	padding-top: calc(
+		var(--width-u) + var(--img-margin) * 2 + (max(500px, 100vh) - 500px) / 2
+	);
+	border-bottom-left-radius: 1000px;
+	border-bottom-right-radius: 1000px;
+	background: #eeeeee;
+	transition: linear 400ms width, linear 400ms height,
+		linear 400ms border-radius, linear 400ms opacity, linear 400ms scale;
+	flex-direction: column;
+	transition-delay: 100ms;
+	align-items: center;
+}
+#myProfileAndFindUser.one #porfileSetting {
+	scale: 1;
+	opacity: 1;
+	width: var(--mn-chat-w);
+	height: 100vh;
+	border-radius: 0;
+	transition-delay: 0;
+}
+#myProfileAndFindUser.show #porfileSetting {
+	display: flex;
+}
+#porfileSetting #profileInformation {
+	--gap: 10px;
+	position: relative;
+	width: auto;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: var(--gap);
+}
+#profileInformation .option {
+	position: relative;
+	width: calc(var(--mn-chat-w) * 0.7);
+	display: flex;
+	padding: 10px 20px;
+	border-radius: 20px;
+	background: #ffffff;
+	box-shadow: inset 0 0 6px #00000033;
+	gap: var(--gap);
+}
+#profileInformation .option:first-child {
+	padding: 5px 20px;
+	width: min-content;
+}
+#profileInformation .option .icon-box {
+	position: relative;
+	width: 25px;
+	height: 25px;
+	border-radius: 100px;
+	display: grid;
+	place-items: center;
+}
+#profileInformation .option .icon-box i {
+	font-size: 20px;
+}
+#profileInformation .option .input-box {
+	display: grid;
+	place-items: center;
+}
+#profileInformation .option .input-box input {
+	position: relative;
+	outline: none;
+	border: none;
+	padding: 5px 10px;
+	font-family: Google;
+	font-size: 15px;
+	font-weight: 900;
+	color: #000000;
+}
+#profileInformation .option:nth-child(3) .input-box input {
+	font-size: 13px;
+}
+#porfileSetting #updateAndLogout {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	display: grid;
+	grid-template-columns: 4fr 1fr;
+	place-items: center;
+	padding: 15px 0;
+}
+#profileInformation .option .input-box textarea {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	outline: none;
+	border: none;
+	resize: none;
+	padding: 5px 10px;
+	font-family: Google;
+	font-size: 15px;
+	font-weight: 900;
+	color: #000000;
+}
+#updateAndLogout .progile-btn {
+	position: relative;
+	display: grid;
+	display: flex;
+	place-items: center;
+	gap: 10px;
+	padding: 8px 20px;
+	border-radius: 6px;
+	background: #0029ff;
+	color: #ffffff;
+	box-shadow: 0 0 3px #00000077;
+	transition: ease-in-out 300ms background;
+	cursor: pointer;
+}
+#updateAndLogout .progile-btn:hover {
+	background: #0030ad;
+}
+#updateAndLogout .progile-btn i {
+	font-size: 20px;
+}
+#porfileSetting #top-right {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	padding: 5px 10px;
+	font-size: 20px;
+	border-radius: 100px;
+	background: #ffffff;
+	box-shadow: inset 0 0 5px #c8c8c8;
+	z-index: 5;
+	cursor: pointer;
+	transition: linear 300ms color, linear 300ms background;
+}
+#porfileSetting #top-right:hover {
+	color: #ff0000;
+	background: #a9a9a9;
+}
+#porfileSetting #updateInfo {
+	position: relative;
+	width: var(--mn-chat-w);
+	display: grid;
+	place-items: center;
+	padding: 10px;
+}
+#porfileSetting #updateInsetInfo {
+	position: relative;
+	display: flex;
+	gap: 5vw;
+	padding: 16px 25px;
+	justify-content: center;
+	align-items: center;
+	box-shadow: inset 0 0 5px #00000033;
+	background: #ffffff;
+	border-radius: 20px;
+}
+#porfileSetting #updateInsetInfo::after {
+	content: "UPDATE";
+	position: absolute;
+	top: -10px;
+	padding: 3px 6px;
+	background: #ffffff;
+	border-radius: 100px;
+	font-size: 12px;
+}
+#porfileSetting .update-btn {
+	position: relative;
+	width: 30px;
+	height: 30px;
+	display: grid;
+	place-items: center;
+	border-radius: 10px;
+	background: #0029ff;
+	color: #ffffff;
+	cursor: pointer;
+	box-shadow: 0 0 3px #00000077;
+	transition: ease-in-out 300ms background;
+}
+#porfileSetting .update-btn:hover {
+	background: #002279;
 }
 
 /* --------------------- file input ------------- */
@@ -546,28 +390,31 @@ body {
 	width: 100vw;
 	height: 100vh;
 	z-index: 10;
+	left: 0;
 	background: rgba(0, 0, 0, 0.8);
 	backdrop-filter: blur(3px);
 	top: -150vh;
-  display: grid;
+	display: grid;
 	place-items: center;
-  transition: ease-in-out 0.3s top;
+	transition: ease-in-out 0.3s top;
 }
 #imageSelection.active {
 	top: 0;
-} 
+}
 
 #imageSelection #canvasBox {
 	position: relative;
 	width: min(70vw, 70vh);
 	height: min(70vw, 70vh);
 	background: black;
-  overflow: hidden;
+	outline: solid 10px #000000;
+	overflow: hidden;
 }
 #canvasBox #selector {
-  --whide: 2px;
-  --sz: 20px;
-  --out: 3rem;
+	--whide: 2px;
+	--sz: 20px;
+	--out: 3rem;
+
 	position: absolute;
 	top: var(--out);
 	bottom: var(--out);
@@ -577,26 +424,26 @@ body {
 	border: solid 1px #fff9;
 	background: transparent;
 	z-index: 5;
-  overflow: hidden;
+	overflow: hidden;
 }
 #canvasBox #selector::after,
 #canvasBox #selector::before {
 	position: absolute;
-  content: "";
-  width: 100%;
-  height: 33.333%;
-  top: 33.333%;
-  border-top: dotted 1px #0007;
-  border-bottom: dotted 1px #0007;
+	content: "";
+	width: 100%;
+	height: 33.333%;
+	top: 33.333%;
+	border-top: dotted 1px #0007;
+	border-bottom: dotted 1px #0007;
 }
 #canvasBox #selector::after {
-  transform: rotate(90deg);
+	transform: rotate(90deg);
 }
 #canvasBox #cvs {
 	position: relative;
 	width: 100%;
 	height: 100%;
-  z-index: 2;
+	z-index: 2;
 }
 #selector .corner {
 	position: absolute;
@@ -604,10 +451,10 @@ body {
 	height: var(--sz);
 	left: 0;
 	top: 0;
-  z-index: 10;
+	z-index: 10;
 }
 #selector .corner::after {
-  content: "";
+	content: "";
 	position: absolute;
 	width: 100%;
 	height: 100%;
@@ -616,27 +463,27 @@ body {
 	border-color: #fff transparent transparent #fff;
 	left: 0;
 	top: 0;
-  cursor: nw-resize;
+	cursor: nw-resize;
 }
 #selector .corner:nth-child(2) {
-  top: auto;
+	top: auto;
 	bottom: 0;
 }
 #selector .corner:nth-child(2)::after {
-  border-color: transparent transparent #fff  #fff;
-  top: auto;
+	border-color: transparent transparent #fff #fff;
+	top: auto;
 	bottom: 0;
-  cursor: ne-resize;
+	cursor: ne-resize;
 }
 #selector .corner:nth-child(3) {
-  top: auto;
+	top: auto;
 	left: auto;
 	right: 0;
 	bottom: 0;
 }
 #selector .corner:nth-child(3)::after {
-	border-color: transparent #fff  #fff transparent;
-  top: auto;
+	border-color: transparent #fff #fff transparent;
+	top: auto;
 	left: auto;
 	right: 0;
 	bottom: 0;
@@ -646,35 +493,42 @@ body {
 	right: 0;
 }
 #selector .corner:nth-child(4)::after {
-  border-color: #fff  #fff transparent transparent;
+	border-color: #fff #fff transparent transparent;
 	left: auto;
 	right: 0;
-  cursor: ne-resize;
+	cursor: ne-resize;
 }
 #selector #midil {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
 }
 #upload-close-btn-box {
-  position: absolute;
-  height: 80px;
-  width: 100vw;
-  z-index: 11;
-  bottom: 0;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+	position: absolute;
+	height: 80px;
+	width: 100vw;
+	z-index: 11;
+	bottom: 0;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
 }
 #upload-close-btn-box .button-upload {
-
+	position: relative;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 10px;
+	background: #0029ff;
+	color: #ffffff;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+	box-shadow: 0 0 3px #00000077;
+	transition: ease-in-out 300ms background;
 }
-#upload-close-btn-box input[type="submit"] {
-  position: relative;
-  padding: 7px 2rem;
-  background-color: #2b00ff;
-  color: #ffffff;
-  border-radius: 5px;
-  cursor: pointer;
+#upload-close-btn-box .button-upload:hover {
+	background: #002ea2;
 }
