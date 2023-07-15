@@ -36,22 +36,34 @@ uploadCancleBtn.addEventListener("click", () => {
 /* ------------- user profile setting ------------- */
 profileOpenClose.addEventListener("click", () => {
     myProfileAndFindUser.classList.toggle("show");
- });
- profielImage.addEventListener("click", () => {
+});
+profielImage.addEventListener("click", () => {
     myProfileAndFindUser.classList.add("one");
     myProfileAndFindUser.classList.remove("two");
- });
- closeProfile.addEventListener("click", () => {
+});
+closeProfile.addEventListener("click", () => {
     myProfileAndFindUser.classList.remove("one");
- });
- searchIcon.addEventListener("click", () => {
+});
+searchIcon.addEventListener("click", () => {
     myProfileAndFindUser.classList.remove("one");
     myProfileAndFindUser.classList.add("two");
- });
- 
- imageEditeOptions.addEventListener("click", () => {
+});
+closeSearch.addEventListener("click", () => {
+    myProfileAndFindUser.classList.remove("two");
+});
+
+imageEditeOptions.addEventListener("click", () => {
     imageEditeOptions.classList.toggle("active");
- });
+});
+
+// search input
+pasteButton.addEventListener("click", async () => {
+    const text = await navigator.clipboard.readText();
+    userSearchInput.value = text.substring(0, 8);
+});
+userSearchInput.addEventListener("keyup", (e) => {
+    userSearchInput.value = e.target.value.toUpperCase();
+});
 
 
 // -------------- image selection --------------
@@ -89,7 +101,7 @@ fileInput.addEventListener("change", (e) => {
         c.drawImage(img, (max - w) / 2, (max - h) / 2, w, h);
 
         function eventHandler() {
-            
+
             const wRatio = w / canvasBox.clientWidth;
             const hRatio = h / canvasBox.clientHeight;
 

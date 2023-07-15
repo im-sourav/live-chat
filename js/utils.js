@@ -229,17 +229,17 @@ function smoothScroll(element, side, distence, time) {
 
    function loop() {
 
-       if (count <= 0) {
-           run = false;
-           if (distence < 0) element[side] = 0;
-           else element[side] = distence;
-       }
-       if (run) {
-           count--;
-           stap += d;
-           element[side] = stap;
-           setTimeout(loop, 1000 / fps);
-       }
+      if (count <= 0) {
+         run = false;
+         if (distence < 0) element[side] = 0;
+         else element[side] = distence;
+      }
+      if (run) {
+         count--;
+         stap += d;
+         element[side] = stap;
+         setTimeout(loop, 1000 / fps);
+      }
    }
    loop();
 }
@@ -271,7 +271,7 @@ const validEmail = exp => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(e
 const validName = exp => /^([a-zA-Zà-úÀ-Ú]{2,})+\s+([a-zA-Zà-úÀ-Ú\s]{2,})+$/.test(exp);
 const validUName = exp => /^[a-zA-Z0-9\_\-\@]{6,16}$/.test(exp);
 const validPass = exp => /^([A-Za-z0-9à-úÀ-Ú\@\_\.\-]{8,16})+$/.test(exp);
-const validText = exp => /^([A-Za-z0-9à-úÀ-Ú\.\-\,\_\|\?\:\*\&\%\#\!\+\~\₹\'\"\`\@\s]{2,})+$/.test(exp); 
+const validText = exp => /^([A-Za-z0-9à-úÀ-Ú\.\-\,\_\|\?\:\*\&\%\#\!\+\~\₹\'\"\`\@\s]{2,})+$/.test(exp);
 
 
 const b36to10 = b36 => parseInt(b36, 36);
@@ -279,10 +279,10 @@ const b10to36 = b10 => b10.toString(36);
 const b64toString = b64 => btoa(b64);
 const stringToB64 = b64 => atob(b64);
 function b36t10(v) {
-  return parseInt(v, 36);
+   return parseInt(v, 36);
 }
 function b10t36(v) {
-  return Number(v).toString(36);
+   return Number(v).toString(36);
 }
 
 /* -------------------------- formula ----------------------------**
@@ -301,29 +301,29 @@ function getGuestId() {
    const date = Date.now(); // in milliseconds
    return {
       date: date,
-      id: `LC${b10to36(date).toUpperCase()}`
+      id: b10to36(date).toUpperCase()
    };
 }
 
-function setCookie(name,value,days) {
+function setCookie(name, value, days) {
    var expires = "";
    if (days) {
-       var date = new Date();
-       date.setTime(date.getTime() + (days*24*60*60*1000));
-       expires = "; expires=" + date.toUTCString();
+      var date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      expires = "; expires=" + date.toUTCString();
    }
-   document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+   document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }
 function getCookie(name) {
    var nameEQ = name + "=";
    var ca = document.cookie.split(';');
-   for(var i=0;i < ca.length;i++) {
-       var c = ca[i];
-       while (c.charAt(0)==' ') c = c.substring(1,c.length);
-       if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+   for (var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
    }
    return null;
 }
-function eraseCookie(name) {   
-   document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+function eraseCookie(name) {
+   document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
